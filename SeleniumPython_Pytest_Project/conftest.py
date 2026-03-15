@@ -22,12 +22,14 @@ def pytest_runtest_makereport(item, call):
     return rep
 
 
-@pytest.fixture(params=['chrome','firefox','edge'])
+@pytest.fixture() # params=['chrome','firefox','edge']
 def setup_and_teardown(request):
     global driver
+    driver = webdriver.Chrome()
+    '''
     if request.param == "chrome":
-        driver = webdriver.Chrome()
-    '''elif request.param == "firefox":
+        
+    elif request.param == "firefox":
         driver = webdriver.Firefox()
     elif request.param == "edge":
         driver = webdriver.Edge()'''
